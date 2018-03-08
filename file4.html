@@ -1,0 +1,47 @@
+<html>
+<script src="angular.min.js">
+
+</script>
+
+
+<body>
+
+
+<div ng-app="myapp" ng-controller="myctrl" ng-init="a=['roopesh','ravi','reshma','rekha']">
+
+<input type="text" ng-model="t1"/>
+
+
+<li ng-repeat="x in a">
+{{x}}
+</li>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<script>
+var app=angular.module('myapp',[]);
+app.controller('myctrl',function($scope){
+
+alert($scope.a);
+
+});
+
+
+
+
+</script>
+
+
+</body>
+</html>

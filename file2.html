@@ -1,0 +1,27 @@
+<html>
+<script src="angular.min.js"></script>
+<body>
+
+<div ng-app="myapp" ng-controller='myctrl' ng-init="obj={pro1:1,pro2:2}">
+
+<!-- <p>{{obj.pro2}}</p> -->
+<p>{{merge_output}}</p>
+
+</div>
+
+<script>
+var app=angular.module('myapp',[]);
+var app1=angular.module('myapp1',[]);
+app.controller('myctrl',function($scope,$http){
+  var obj1={mem1:"member1",mem2:"member2"};
+  var obj2={mem3:"member3",mem4:"member4"};
+  var obj3=angular.merge({mem5:"smaple"},obj1,obj2);
+  $scope.merge_output=obj3;
+
+//$http.get()
+
+});
+</script>
+
+</body>
+</html>

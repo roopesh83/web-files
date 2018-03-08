@@ -1,0 +1,46 @@
+<html>
+<script src="angular.min.js">
+
+</script>
+
+
+<body>
+
+
+<div ng-app="myapp" ng-controller="myctrl as m1" ng-init="a=55">
+
+<input ng-bind=name type="text" ng-model="name"/>
+<p ng-bind="name"></p>
+<p>person details: {{m1.person.name}}</p>
+<button ng-show="m1.person.show_button">Showing</button>
+
+
+</div>
+
+
+
+
+
+
+
+
+<script>
+var app=angular.module('myapp',[]);
+app.controller('myctrl',function($scope){
+$scope.name="roopy"
+this.person=person;
+
+
+});
+var person={name:"roopesh",age:22,show_button:true};
+//var person={name:"roopesh",age:22};
+//);
+
+
+
+
+</script>
+
+
+</body>
+</html>

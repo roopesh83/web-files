@@ -1,0 +1,127 @@
+<html>
+<body>
+
+<script  src="angular.min.js">
+</script>
+
+<div ng-app="myapp" ng-controller="myctrl" ng-init="veg_images=['Veg.jpeg','Non-veg.jpeg'];price={Veg:100,'Non-veg':180};u=0;">
+<p>{{merge_output}}</p>
+  Chosse veg/non veg <br/><br/>
+  <select name="Veg" ng-model="choice">
+    <option ng-model="choice">Veg</option>
+    <option ng-model="choice">Non-veg</option>
+  </select>
+
+  <p>Your choice is {{choice}}</p>
+  <img src={{choice+".jpeg"}} alt="error!" ng-mouseenter="mouseenter()" ng-mouseleave="mouseleave()" ng-show="button"/>
+
+  <center>
+    <button ng-init="button=true" ng-click="toggle()">image?</button>
+    <textarea ng-model="text"></textarea>
+  </center>
+  <p>Enter qty</p>
+
+<!--
+  <p>enter color</p>
+
+  <input style="background-color:{{color}}" type="text" ng-model="color"/>
+-->
+  <br/>
+  <p>qty</p><input type="text" ng-model="qty" ng-init="checked=false"/>
+  <br/>
+<!--
+  <p>price</p><input type="text" ng-bind=choice value={{price[choice]}}/>
+-->
+
+  <p> price -- {{price[choice]}}</p>
+  <br/>total is
+  <p>{{qty*price[choice]}}</p>
+    <br/>
+
+  <p>order ?- {{checked}}</p>
+
+  <input type="checkbox" ng-model="checked"/>
+  <p ng-bind="color"></p>
+
+
+<p>{{loc}}</p>
+<h2>Time right now is {{time}}</h2>
+
+
+
+
+
+</div>
+
+
+
+
+<script>
+
+var app=angular.module('myapp',[]);
+app.controller('myctrl',function($scope,$location,$interval){
+
+$scope.qty=1;
+$scope.price=0;
+$scope.choice="Veg";  //default choice
+$scope.loc=$location.absUrl();
+
+
+var obj1={mem1:"member1",mem2:"member2"};
+var obj2={mem3:"member3",mem4:"member4"};
+var obj3=angular.merge({},obj1,obj2);
+$scope.merge_object=obj3;
+
+
+$scope.toggle=function(){
+
+  if($scope.button==true){
+    $scope.button=false;
+  }else{
+    $scope.button=true;
+  }
+
+}
+
+
+$scope.mouseenter=function(){
+
+  if($scope.choice=="Veg"){
+  $scope.text=angular.uppercase("Nice vegetarian food, spicy :P");
+  }else{
+    $scope.text="Non veg , :-)";
+  }
+
+}
+
+
+$scope.mouseleave=function(){
+
+$scope.text="";
+
+}
+
+
+$interval(function(){
+
+
+
+$scope.time=new Date().toLocaleTimeString();
+
+},1000);
+
+});
+
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+
+</html>
